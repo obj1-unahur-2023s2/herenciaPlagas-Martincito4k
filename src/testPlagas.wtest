@@ -1,0 +1,73 @@
+import elementos.*
+import barrio.*
+import plagas.*
+
+describe "Test de plagas"{
+	//elementos
+	const hogar1 = new Hogar(nivelDeMugre = 10, confort = 5)
+	const huerta1 = new Huerta(capacidadDeProduccion = 20)
+	const mascota1 = new Mascota(nivelDeSalud = 10)
+	//barrio
+	const barrio1 = new Barrios()
+	//plagas
+	const cucarachas1 = new Cucarachas(poblacion = 20,pesoPromedio = 8)
+	const pulgas1 = new Pulgas(poblacion = 40)
+	const garrapatas1 = new Garrapatas(poblacion = 40)
+	const mosquitos1 = new Mosquitos(poblacion = 60)
+	
+	method initialize(){
+		//barrios
+		barrio1.agregarElemento(hogar1)
+		nivelDeProduccion.asignarNivel(15)
+		barrio1.agregarElemento(huerta1)
+		barrio1.agregarElemento(mascota1)
+	}	
+	//cucarachas
+	test "nivelDeDanio de las cucarachas1 = 10" {
+		assert.equals(cucarachas1.nivelDeDanio(),10)
+	}
+	test "las cucarachas1 no transmitenEnfermedades"{
+		assert.notThat(cucarachas1.transmitenEnfermedades())
+	}
+	test "al recibir efectoAtaque la poblacion de cucarachas1 = 22"{
+		hogar1.recibirAtaque(cucarachas1)
+		assert.equals(22, cucarachas1.poblacion())
+	}
+	test "al recibir efectoAtaque el pesoPromedio de cucarachas1 = 10"{
+	hogar1.recibirAtaque(cucarachas1)
+	assert.equals(10, cucarachas1.pesoPromedio())
+	}
+	//pulgas
+	test "nivelDeDanio de las pulgas = 80" {
+		assert.equals(pulgas1.nivelDeDanio(),80)
+	}
+	test "las pulgas1 transmitenEnfermedades"{
+		assert.that(pulgas1.transmitenEnfermedades())
+	}
+	test "al recibir efectoAtaque la poblacion de pulgas1 = 44"{
+		hogar1.recibirAtaque(pulgas1)
+		assert.equals(44, pulgas1.poblacion())
+		}
+	//garrapatas
+	test "nivelDeDanio de las garrapatas1 = 80" {
+		assert.equals(garrapatas1.nivelDeDanio(),80)
+	}
+	test "las garrapatas1 transmitenEnfermedades"{
+		assert.that(garrapatas1.transmitenEnfermedades())
+	}
+	test "al recibir efectoAtaque la poblacion de garrapatas1 = 48"{
+		hogar1.recibirAtaque(garrapatas1)
+		assert.equals(48, garrapatas1.poblacion())
+		}
+	//mosquitos
+	test "nivelDeDanio de las mosquitos1 = 60" {
+		assert.equals(mosquitos1.nivelDeDanio(),60)
+	}
+	test "las mosquitos1 transmitenEnfermedades"{
+		assert.that(mosquitos1.transmitenEnfermedades())
+	}
+	test "al recibir efectoAtaque la poblacion de mosquitos1 = 66"{
+		hogar1.recibirAtaque(mosquitos1)
+		assert.equals(66, mosquitos1.poblacion())
+		}
+}

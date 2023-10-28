@@ -1,0 +1,22 @@
+import elementos.*
+import barrio.*
+import plagas.*
+
+describe "Test de barrios"{
+	//elementos
+	const hogar1 = new Hogar(nivelDeMugre = 10, confort = 5)
+	const huerta1 = new Huerta(capacidadDeProduccion = 20)
+	const mascota1 = new Mascota(nivelDeSalud = 10)
+	//barrio
+	const barrio1 = new Barrios()
+	
+	method initialize(){
+		barrio1.agregarElemento(hogar1)
+		nivelDeProduccion.asignarNivel(15)
+		barrio1.agregarElemento(huerta1)
+		barrio1.agregarElemento(mascota1)
+	}
+	test "el barrio barrio1 no es copado" {
+		assert.notThat(barrio1.esBarrioCopado())
+	}
+}

@@ -1,0 +1,50 @@
+import elementos.*
+import barrio.*
+import plagas.*
+
+describe "Test de plagas"{
+	//elementos
+	const hogar1 = new Hogar(nivelDeMugre = 10, confort = 5)
+	const huerta1 = new Huerta(capacidadDeProduccion = 20)
+	const mascota1 = new Mascota(nivelDeSalud = 10)
+	//barrio
+	const barrio1 = new Barrios()
+	//plagas
+	const cucarachas1 = new Cucarachas(poblacion = 20,pesoPromedio = 8)
+	const pulgas1 = new Pulgas(poblacion = 40)
+	const garrapatas1 = new Garrapatas(poblacion = 40)
+	const mosquitos1 = new Mosquitos(poblacion = 60)
+	
+	method initialize(){
+		//barrios
+		barrio1.agregarElemento(hogar1)
+		nivelDeProduccion.asignarNivel(15)
+		barrio1.agregarElemento(huerta1)
+		barrio1.agregarElemento(mascota1)
+	}
+
+	test "el hogar1 no es bueno"{
+		assert.notThat(hogar1.esBueno())
+	}
+	
+	test "el huerta1 es bueno"{
+		assert.that(huerta1.esBueno())
+	}
+	
+	test "la mascota1 no es buena"{
+		assert.notThat(mascota1.esBueno())
+	}
+	test "cuando el hogar1 recibe un ataque de cucarachas1 el nivel de mugre = 20"{
+		hogar1.recibirAtaque(cucarachas1)
+		assert.equals(hogar1.nivelDeMugre(), 20)
+	}
+	test"cuando la huerta1 recibe un ataque de pulgas1 la capacidadDeProduccion = 2"{
+		huerta1.recibirAtaque(pulgas1)
+		assert.equals(huerta1.capacidadDeProduccion(),2)
+	}
+	test "cuando la mascota1 recibe un ataque de mosquitos1 el nivelDeSalud de mascota1 = 0"{
+		mascota1.recibirAtaque(mosquitos1)
+		assert.equals(mascota1.nivelDeSalud(), 0)
+	}
+
+}
